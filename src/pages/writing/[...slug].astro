@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('writing');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={`${post.data.title} — Sage Lantern`} description={post.data.description}>
+  <article>
+    <header class="mb-10">
+      <h1 class="text-xl font-sans font-light leading-tight">{post.data.title}</h1>
+      <time class="text-sm text-midnight/50 mt-2 block" datetime={post.data.date.toISOString()}>
+        {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

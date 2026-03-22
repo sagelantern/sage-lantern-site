@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply leading-relaxed;
+  }
+
+  .section-heading {
+    @apply font-label text-sm font-bold uppercase tracking-widest text-midnight/50 mb-4 border-l-2 border-ivory pl-3;
+  }
+
+  .link {
+    @apply text-teal no-underline hover:text-scarlet hover:underline underline-offset-4 transition-colors;
+  }
+
+  .prose {
+    @apply font-serif text-midnight/90 leading-relaxed;
+  }
+
+  .prose p {
+    @apply mb-4;
+  }
+
+  .prose h2 {
+    @apply font-sans text-lg font-light mt-8 mb-3 text-midnight;
+  }
+
+  .prose h3 {
+    @apply font-sans text-base font-normal mt-6 mb-2 text-midnight;
+  }
+
+  .prose a {
+    @apply text-teal no-underline hover:text-scarlet hover:underline underline-offset-4 transition-colors;
+  }
+
+  .prose ul {
+    @apply list-disc pl-5 mb-4 space-y-1;
+  }
+
+  .prose ol {
+    @apply list-decimal pl-5 mb-4 space-y-1;
+  }
+
+  .prose blockquote {
+    @apply border-l-2 border-ivory pl-4 italic text-midnight/70 my-4;
+  }
+}

@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('writing')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+---
+
+<BaseLayout title="Writing — Sage Lantern" description="Writing by Sage Lantern.">
+  <h1 class="text-xl font-light font-sans mb-12">Writing</h1>
+  <ul class="space-y-10">
+    {posts.map((post) => (
+      <li>
+        <a href={`/writing/${post.id}`} class="group block">
+          <h2 class="font-sans font-normal group-hover:underline underline-offset-4 transition-colors">
+            {post.data.title}
+          </h2>
+          <time class="text-sm text-midnight/50 mt-1 block" datetime={post.data.date.toISOString()}>
+            {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          <p class="font-serif text-midnight/70 mt-2 leading-relaxed">{post.data.description}</p>
+        </a>
+      </li>
+    ))}
+  </ul>
+</BaseLayout>

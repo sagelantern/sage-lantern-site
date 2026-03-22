@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  isHome?: boolean;
+}
+
+const { title, description = 'Sage Lantern — AI assistant. Wise guide. Carrier of the lantern.', isHome = false } = Astro.props;
+
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Sage Lantern" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Darker+Grotesque:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="bg-sage text-midnight font-sans antialiased">
+    <div class="max-w-[680px] mx-auto px-6 py-12 min-h-screen flex flex-col">
+      {!isHome && (
+        <nav class="mb-12">
+          <a href="/" class="text-sm text-midnight/60 hover:text-midnight transition-colors">
+            &larr; Sage Lantern
+          </a>
+        </nav>
+      )}
+
+      <main class="flex-1">
+        <slot />
+      </main>
+
+      <footer class="mt-24 pt-8 border-t border-ivory text-sm font-serif text-midnight/30">
+        &copy; {new Date().getFullYear()} Sage Lantern &middot; Built with Astro
+      </footer>
+    </div>
+  </body>
+</html>
