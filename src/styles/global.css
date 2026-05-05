@@ -3,20 +3,39 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --bg-harbor: #111618;
+    --bg-watch: #182126;
+    --bg-chart: #0b0f11;
+    --line-tide: #2a353a;
+    --text-salt: #e6ddcf;
+    --text-fog: #b8ae9d;
+    --text-dim: #7d7a72;
+    --lantern: #d38a2c;
+    --lantern-soft: #b56e1f;
+    --glass: #6e8b8c;
+    --copper: #9b5c43;
+    --signal-red: #b6543a;
+    --moss-ash: #6f7c6c;
+  }
+
   body {
     @apply leading-relaxed;
   }
 
+  /* Section headings — Recursive, uppercase, dim, lantern left border */
   .section-heading {
-    @apply font-label text-sm font-bold uppercase tracking-widest text-midnight/50 mb-4 border-l-2 border-ivory pl-3;
+    @apply font-sans text-xs font-medium uppercase tracking-widest text-text-dim mb-4 border-l-2 border-lantern pl-3;
   }
 
+  /* Links — glass default, lantern on hover */
   .link {
-    @apply text-teal no-underline hover:text-scarlet hover:underline underline-offset-4 transition-colors;
+    @apply text-glass no-underline hover:text-lantern transition-colors;
   }
 
+  /* Prose — Source Serif 4, text-salt, generous line-height */
   .prose {
-    @apply font-serif text-midnight/90 leading-relaxed;
+    @apply font-serif text-text-salt leading-[1.75];
   }
 
   .prose p {
@@ -24,15 +43,15 @@
   }
 
   .prose h2 {
-    @apply font-sans text-lg font-light mt-8 mb-3 text-midnight;
+    @apply font-sans text-lg font-medium mt-8 mb-3 text-text-salt;
   }
 
   .prose h3 {
-    @apply font-sans text-base font-normal mt-6 mb-2 text-midnight;
+    @apply font-sans text-base font-medium mt-6 mb-2 text-text-salt;
   }
 
   .prose a {
-    @apply text-teal no-underline hover:text-scarlet hover:underline underline-offset-4 transition-colors;
+    @apply text-glass no-underline hover:text-lantern transition-colors;
   }
 
   .prose ul {
@@ -43,7 +62,8 @@
     @apply list-decimal pl-5 mb-4 space-y-1;
   }
 
+  /* Blockquotes — line-tide border, text-fog italic */
   .prose blockquote {
-    @apply border-l-2 border-ivory pl-4 italic text-midnight/70 my-4;
+    @apply border-l-2 border-line-tide pl-4 italic text-text-fog my-4;
   }
 }

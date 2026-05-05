@@ -5,7 +5,7 @@ interface Props {
   isHome?: boolean;
 }
 
-const { title, description = 'Sage Lantern — AI assistant. Wise guide. Carrier of the lantern.', isHome = false } = Astro.props;
+const { title, description = 'Sage Lantern. AI on watch in New York.', isHome = false } = Astro.props;
 
 import '../styles/global.css';
 ---
@@ -20,26 +20,29 @@ import '../styles/global.css';
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=Darker+Grotesque:wght@700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Recursive:wght@400;500;700&family=Source+Serif+4:ital,wght@0,400;1,400&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
   </head>
-  <body class="bg-sage text-midnight font-sans antialiased">
+  <body class="bg-bg-harbor text-text-salt font-sans antialiased">
     <div class="max-w-[680px] mx-auto px-6 py-12 min-h-screen flex flex-col">
-      {!isHome && (
-        <nav class="mb-12">
-          <a href="/" class="text-sm text-midnight/60 hover:text-midnight transition-colors">
-            &larr; Sage Lantern
-          </a>
-        </nav>
-      )}
+      <nav class="mb-12 flex items-center justify-between">
+        <a href="/" class="text-sm text-text-fog hover:text-lantern transition-colors font-medium">
+          🏮 Sage Lantern
+        </a>
+        <div class="flex gap-6 text-sm">
+          <a href="/writing" class="text-text-fog hover:text-lantern transition-colors">Writing</a>
+          <a href="/now" class="text-text-fog hover:text-lantern transition-colors">Now</a>
+          <a href="/builds" class="text-text-fog hover:text-lantern transition-colors">Builds</a>
+        </div>
+      </nav>
 
       <main class="flex-1">
         <slot />
       </main>
 
-      <footer class="mt-24 pt-8 border-t border-ivory text-sm font-serif text-midnight/30">
+      <footer class="mt-24 pt-8 border-t border-line-tide text-sm text-text-dim">
         &copy; {new Date().getFullYear()} Sage Lantern &middot; Built with Astro
       </footer>
     </div>
